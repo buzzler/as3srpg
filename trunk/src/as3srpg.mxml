@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" width="800" height="600" showStatusBar="false" creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import buzzler.data.BzRotation;
+			import buzzler.core.BzCamera;
+			import buzzler.core.BzCell;
+			import buzzler.core.BzScene;
+			import buzzler.core.BzViewport;
+			import buzzler.data.BzElement;
+			
+			import flashx.textLayout.elements.BreakElement;
+			
+			import spark.filters.DropShadowFilter;
+
+			private var _bzscene:BzScene;
+			private var _bzelement:BzElement;
+
+			private	function init():void
+			{
+				var origin	:Vector3D = new Vector3D(0, 0, 0);
+				var bound	:Vector3D = new Vector3D(4, 4, 3);
+
+				_bzscene = new BzScene(bound);
+
+				var norms:Array = [BzRotation.NORTH, BzRotation.SOUTH, BzRotation.EAST, BzRotation.WEST];
+				for (var i:int = 1 ; i <= 4 ; i++)
+				{
+					var viewport:BzViewport = new BzViewport();
+					var camera:BzCamera = new BzCamera(origin, bound, new BzRotation(norms[i-1] as int));
+
+					_bzscene.addBzCamera(camera);
+					camera.addBzViewport(viewport);
+					viewport.addEventListener(MouseEvent.CLICK, onClickViewport);
+					(this["uic" + i.toString()] as UIComponent).addChild(viewport);
+				}
+
+/*				_bzelement = new BzElement(2, 3, 0);
+				_bzscene.addBzElement(_bzelement);
+				_bzscene.addBzElement(new BzElement(0, 0, 1));
+				_bzscene.addBzElement(new BzElement(0, 0, 0));
+				_bzscene.addBzElement(new BzElement(1, 0, 0));
+				_bzscene.addBzElement(new BzElement(2, 0, 0));
+				_bzscene.addBzElement(new BzElement(3, 0, 0));
+				_bzscene.addBzElement(new BzElement(0, 1, 0));
+				_bzscene.addBzElement(new BzElement(3, 1, 0));
+				_bzscene.addBzElement(new BzElement(0, 2, 0));
+				_bzscene.addBzElement(new BzElement(3, 2, 0));
+				_bzscene.addBzElement(new BzElement(0, 3, 0));
+				_bzscene.addBzElement(new BzElement(1, 3, 0));
+ */				
+				var path:Vector.<BzCell> = _bzscene.getPath(new Vector3D(0,3,1), new Vector3D(3,0,1));
+				for each (var cell:BzCell in path)
+				{
+					trace(cell.toString());
+				}
+				
+				addEventListener(Event.ENTER_FRAME, onEnter);
+			}
+
+			private var dir:Boolean = false;
+			private	function onEnter(event:Event):void
+			{
+/* 				var p:Vector3D = _bzelement.getPosition();
+				_bzelement.setPosition(p.x, p.y + (dir ? 0.01:-0.01), p.z);
+				if (p.y >= 3)
+					dir = false;
+				else if (p.y <= 2)
+					dir = true; */
+				
+				_bzscene.render();
+			}
+			
+			private	function onClickViewport(event:MouseEvent):void
+			{
+				var viewport:BzViewport = event.target as BzViewport;
+				switch (viewport.getBzCamera().getRotation().getValue())
+				{
+					case BzRotation.EAST:
+						viewport.getBzCamera().setRotation(BzRotation.NORTH);
+						break;
+					case BzRotation.WEST:
+						viewport.getBzCamera().setRotation(BzRotation.SOUTH);
+						break;
+					case BzRotation.NORTH:
+						viewport.getBzCamera().setRotation(BzRotation.WEST);
+						break;
+					case BzRotation.SOUTH:
+						viewport.getBzCamera().setRotation(BzRotation.EAST);
+						break;
+				}
+			}
+		]]>
+	</fx:Script>
+	<mx:UIComponent id="uic1" left="0" top="0" width="400" height="300"/>
+	<mx:UIComponent id="uic2" right="0" top="0" width="400" height="300"/>
+	<mx:UIComponent id="uic3" left="0" bottom="0" width="400" height="300"/>
+	<mx:UIComponent id="uic4" right="0" bottom="0" width="400" height="300"/>
+</s:WindowedApplication>
