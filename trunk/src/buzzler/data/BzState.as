@@ -12,7 +12,7 @@ package buzzler.data
 		
 		public function BzState(type:String, north:BzSprite, east:BzSprite, south:BzSprite, west:BzSprite)
 		{
-			_type		= type;
+			_type	= type;
 			_north	= north;
 			_east	= east;
 			_south	= south;

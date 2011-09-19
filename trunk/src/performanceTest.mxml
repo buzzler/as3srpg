@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+					   xmlns:s="library://ns.adobe.com/flex/spark"
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   width="1280" height="640" showStatusBar="false" creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import buzzler.core.BzCamera;
+			import buzzler.core.BzCell;
+			import buzzler.core.BzMap;
+			import buzzler.core.BzRectangle;
+			import buzzler.core.BzScene;
+			import buzzler.core.BzViewport;
+			import buzzler.data.BzElement;
+			import buzzler.data.BzRotation;
+			import buzzler.temp.BzAlice;
+			import buzzler.temp.BzRock;
+			
+			private var _bzmap		:Sprite;
+			private	var _rect		:BzRectangle;
+			private var _scene		:BzScene;
+			private	var _viewportL	:BzViewport;
+			private	var _viewportR	:BzViewport;
+			private var _cameraN	:BzCamera;
+			private var _cameraS	:BzCamera;
+			private var _elements	:Array;
+			private var _gravity	:Number;
+			private	var _friction	:Number;
+			private	var _count		:int;
+			
+			private	function init():void
+			{
+				_bzmap		= new Sprite();
+				_rect		= new BzRectangle(0,0,0,10,10,10);
+				_scene		= new BzScene(_rect);
+				_viewportL	= new BzViewport();
+				_viewportR	= new BzViewport();
+				_cameraN	= new BzCamera(_rect, new BzRotation(BzRotation.NORTH));
+				_cameraS	= new BzCamera(_rect, new BzRotation(BzRotation.SOUTH));
+				_elements	= [];
+				_gravity	= -0.02;
+				_count		= 10;
+				
+				_scene.addBzCamera(_cameraN);
+				_scene.addBzCamera(_cameraS);
+				_cameraN.addBzViewport(_viewportL);
+				_cameraS.addBzViewport(_viewportR);
+				uic1.addChild(_viewportL);
+				uic2.addChild(_viewportR);
+				uic5.addChild(_bzmap);
+				
+				for (var k:int = 0 ; k < _count ; k++)
+				{
+					var obj:Object = {object:new BzAlice(Math.random()*_rect.width, Math.random()*_rect.height, Math.random()*_rect.depth), vector:new Vector3D(0.1*Math.random(), 0.1*Math.random(), 0.1*Math.random())};
+					_elements.push(obj);
+					_scene.addBzElement(obj.object as BzElement);
+				}
+				
+				addEventListener(Event.ENTER_FRAME, onEnter);
+			}
+			
+			private	function onEnter(event:Event):void
+			{
+				var map:BzMap = _scene.getBzMap();
+				_bzmap.graphics.clear();
+				var unit:Number = 20;
+				var ofsx:Number = this.uic5.width - unit * _rect.width - 5;
+				var ofsy:Number = 5;
+				var alpha:Number = 1 / _rect.depth;
+				
+				_bzmap.graphics.lineStyle(1,0xFF0000);
+				_bzmap.graphics.moveTo(ofsx, ofsy);
+				_bzmap.graphics.lineTo(ofsx+unit*_rect.width, ofsy);
+				_bzmap.graphics.lineTo(ofsx+unit*_rect.width, ofsy+unit*_rect.height);
+				_bzmap.graphics.lineTo(ofsx, ofsy+unit*_rect.height);
+				_bzmap.graphics.lineTo(ofsx, ofsy);
+				
+				for (var k:int = 0 ; k < _rect.depth ; k++)
+				{
+					for (var j:int = 0 ; j < _rect.height ; j++)
+					{
+						for (var i:int = 0 ; i < _rect.width ; i++)
+						{
+							var cell:BzCell = map.getBzCell(i, j, k);
+							_bzmap.graphics.beginFill(0xFF0000, alpha*cell.getBzElements().length);
+							_bzmap.graphics.drawRect(ofsx + i*unit,ofsy + j*unit, unit, unit);
+						}
+					}
+				}
+				_bzmap.graphics.endFill();
+				
+				for each (var obj:Object in _elements)
+				{
+					var object:BzElement = obj.object as BzElement;
+					var position:Vector3D = object.getPosition();
+					var vector:Vector3D = obj.vector as Vector3D;
+					
+					position = position.add(vector);
+					vector.z += _gravity;
+					
+					if (position.x < 0)
+					{
+						position.x =-position.x;
+						vector.x =-vector.x;
+					}
+					else if (position.x > _rect.right)
+					{
+						position.x = 2*_rect.right - position.x;
+						vector.x =-vector.x;
+					}
+					
+					if (position.y < 0)
+					{
+						position.y =-position.y;
+						vector.y =-vector.y;
+					}
+					else if (position.y > _rect.bottom)
+					{
+						position.y = 2*_rect.bottom - position.y;
+						vector.y =-vector.y;
+					}
+					
+					if (position.z < 0)
+					{
+						position.z =-position.z;
+						vector.z =-vector.z + 2*_gravity;
+					}
+					
+					object.setPosition(position.x, position.y, position.z);
+				}
+				
+				_scene.render();
+			}
+		]]>
+	</fx:Script>
+	<mx:UIComponent id="uic1" left="0" width="640" height="100%"/>
+	<mx:UIComponent id="uic2" right="0" width="640" height="100%"/>
+	<mx:UIComponent id="uic5" right="0" width="640" height="100%"/>
+</s:WindowedApplication>

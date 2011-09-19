@@ -3,6 +3,7 @@ package buzzler.data
 	import buzzler.consts.BzTile;
 	import buzzler.core.BzCell;
 	import buzzler.core.BzMap;
+	import buzzler.core.BzRectangle;
 	import buzzler.core.BzScene;
 	
 	import flash.display.Bitmap;
@@ -16,13 +17,13 @@ package buzzler.data
 	{
 		private	static	var _hash		:Dictionary = new Dictionary();
 		private			var _scene		:BzScene;
-		private			var _position	:Vector3D;
+		private			var _rect		:BzRectangle;
 		private			var _rotation	:BzRotation;
 		private			var _views		:Dictionary;
 		private			var _sets		:BzSet;
 		private			var _current	:BzState;
 
-		public	function BzElement(sets:BzSet, state:String, x:int, y:int, z:int, rotation:int)
+		public	function BzElement(sets:BzSet, state:String, rect:BzRectangle)
 		{
 			if (!sets.containByType(state))
 			{
@@ -31,18 +32,23 @@ package buzzler.data
 			}
 			
 			_scene		= null;
-			_position	= new Vector3D();
-			_rotation	= new BzRotation(rotation);
+			_rect		= rect.clone();
+			_rotation	= new BzRotation(BzRotation.NORTH);
 			_views		= new Dictionary();
 			_sets		= sets;
 			_current	= sets.getState(state);
 
-			setPosition(x, y, z);
+			setPosition(_rect.x, _rect.y, _rect.z);
 		}
 
 		public	function setBzScene(scene:BzScene):void
 		{
 			_scene = scene;
+		}
+		
+		public	function getBzScene():BzScene
+		{
+			return _scene;
 		}
 		
 		public	function setState(type:String):void
@@ -69,11 +75,16 @@ package buzzler.data
 			return _current;
 		}
 		
+		public	function getBzRectangle():BzRectangle
+		{
+			return _rect;
+		}
+		
 		public	function setPosition(x:Number, y:Number, z:Number):void
 		{
-			_position.x = x;
-			_position.y = y;
-			_position.z = z;
+			_rect.x = x;
+			_rect.y = y;
+			_rect.z = z;
 
 			for each (var view:BzDisplayObject in _views)
 			{
@@ -88,23 +99,37 @@ package buzzler.data
 
 		public	function getPosition():Vector3D
 		{
-			return _position;
+			return _rect.topLeftFloor;
 		}
 		
 		public	function setRotation(rotation:int):void
 		{
 			if (_rotation.getValue() != rotation)
 			{
+				if ( Math.abs(_rotation.getValue()-rotation) != 180 )
+				{
+					var w:Number	= _rect.width;
+					var h:Number	= _rect.height;
+
+					_rect.width		= h;
+					_rect.height	= w;
+				}
+				
 				_rotation.setValue(rotation);
 				
 				for each (var view:BzDisplayObject in _views)
 				{
 					view.setRotateFlag();
 				}
+				
+				if (_scene)
+				{
+					_scene.moveBzElement(this);
+				}
 			}
 		}
 		
-		public	function getRotation():BzRotation
+		public	function getBzRotation():BzRotation
 		{
 			return _rotation;
 		}

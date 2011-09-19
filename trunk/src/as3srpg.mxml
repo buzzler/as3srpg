@@ -1,77 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					   xmlns:s="library://ns.adobe.com/flex/spark" 
-					   xmlns:mx="library://ns.adobe.com/flex/mx" width="800" height="600" showStatusBar="false" creationComplete="init()">
+					   xmlns:mx="library://ns.adobe.com/flex/mx" width="832" height="544" showStatusBar="false" creationComplete="init()">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import buzzler.data.BzRotation;
 			import buzzler.core.BzCamera;
 			import buzzler.core.BzCell;
+			import buzzler.core.BzMap;
+			import buzzler.core.BzRectangle;
 			import buzzler.core.BzScene;
 			import buzzler.core.BzViewport;
 			import buzzler.data.BzElement;
+			import buzzler.data.BzRotation;
+			import buzzler.temp.BzAlice;
+			import buzzler.temp.BzGrass;
+			import buzzler.temp.BzRock;
+			import buzzler.temp.BzRockBlue;
+			import buzzler.temp.BzRockCyan;
+			import buzzler.temp.BzRockMagenta;
+			import buzzler.temp.BzRockRed;
+			import buzzler.temp.BzRockYellow;
 			
-			import flashx.textLayout.elements.BreakElement;
-			
-			import spark.filters.DropShadowFilter;
-
 			private var _bzscene:BzScene;
 			private var _bzelement:BzElement;
+			private	var _bzyellow:BzRockMagenta;
+			private	var _bzycyan:BzRockCyan;
+			private var _bzmap:Sprite;
+			private	var _bzrect:BzRectangle;
 
 			private	function init():void
 			{
-				var origin	:Vector3D = new Vector3D(0, 0, 0);
-				var bound	:Vector3D = new Vector3D(4, 4, 3);
-
-				_bzscene = new BzScene(bound);
-
+				_bzrect = new BzRectangle(0,0,0,9,4,3);
+				_bzscene = new BzScene(_bzrect);
 				var norms:Array = [BzRotation.NORTH, BzRotation.SOUTH, BzRotation.EAST, BzRotation.WEST];
 				for (var i:int = 1 ; i <= 4 ; i++)
 				{
 					var viewport:BzViewport = new BzViewport();
-					var camera:BzCamera = new BzCamera(origin, bound, new BzRotation(norms[i-1] as int));
+					var camera:BzCamera = new BzCamera(_bzrect, new BzRotation(norms[i-1] as int));
 
 					_bzscene.addBzCamera(camera);
 					camera.addBzViewport(viewport);
 					viewport.addEventListener(MouseEvent.CLICK, onClickViewport);
 					(this["uic" + i.toString()] as UIComponent).addChild(viewport);
 				}
+				_bzmap = new Sprite();
+				this.uic5.addChild(_bzmap);
 
-/*				_bzelement = new BzElement(2, 3, 0);
+				_bzelement = new BzRock(2, 3, 0);
 				_bzscene.addBzElement(_bzelement);
-				_bzscene.addBzElement(new BzElement(0, 0, 1));
-				_bzscene.addBzElement(new BzElement(0, 0, 0));
-				_bzscene.addBzElement(new BzElement(1, 0, 0));
-				_bzscene.addBzElement(new BzElement(2, 0, 0));
-				_bzscene.addBzElement(new BzElement(3, 0, 0));
-				_bzscene.addBzElement(new BzElement(0, 1, 0));
-				_bzscene.addBzElement(new BzElement(3, 1, 0));
-				_bzscene.addBzElement(new BzElement(0, 2, 0));
-				_bzscene.addBzElement(new BzElement(3, 2, 0));
-				_bzscene.addBzElement(new BzElement(0, 3, 0));
-				_bzscene.addBzElement(new BzElement(1, 3, 0));
- */				
-				var path:Vector.<BzCell> = _bzscene.getPath(new Vector3D(0,3,1), new Vector3D(3,0,1));
-				for each (var cell:BzCell in path)
-				{
-					trace(cell.toString());
-				}
-				
+				_bzscene.addBzElement(new BzRock(8, 3, 2));
+				_bzscene.addBzElement(new BzRock(0, 0, 2));
+				_bzscene.addBzElement(new BzRock(0, 0, 0));
+				_bzscene.addBzElement(new BzRock(1, 0, 0));
+				_bzscene.addBzElement(new BzGrass(6, 2, 2));
+				_bzscene.addBzElement(new BzGrass(6, 1, 2));
+				_bzscene.addBzElement(new BzGrass(7, 1, 2));
+				_bzscene.addBzElement(new BzGrass(7, 2, 2));
+				_bzscene.addBzElement(new BzGrass(0, 2, 1));
+				_bzscene.addBzElement(new BzGrass(4, 0, 1));
+				_bzscene.addBzElement(new BzRockRed(6, 1, 0));
+				_bzscene.addBzElement(new BzRock(2, 0, 0));
+				_bzscene.addBzElement(new BzRock(3, 0, 0));
+				_bzscene.addBzElement(new BzRock(0, 1, 0));
+				_bzscene.addBzElement(new BzRock(3, 1, 0));
+				_bzscene.addBzElement(new BzRock(0, 2, 0));
+				_bzscene.addBzElement(new BzRock(3, 2, 0));
+				_bzscene.addBzElement(new BzRock(0, 3, 0));
+				_bzscene.addBzElement(new BzRock(1, 3, 0));
+				_bzscene.addBzElement(new BzRock(4, 2, 0));
+				_bzscene.addBzElement(new BzRock(4, 2, 1));
+				_bzscene.addBzElement(new BzRock(5, 2, 0));
+				_bzscene.addBzElement(new BzRock(5, 3, 0));
+				_bzscene.addBzElement(new BzRock(6, 3, 0));
+				_bzscene.addBzElement(new BzRock(7, 3, 0));
+				_bzscene.addBzElement(new BzRock(8, 3, 0));
+				_bzscene.addBzElement(new BzRock(8, 2, 0));
+				_bzscene.addBzElement(new BzRock(8, 1, 0));
+				_bzscene.addBzElement(new BzRock(8, 0, 0));
+				_bzscene.addBzElement(new BzRock(7, 0, 0));
+				_bzscene.addBzElement(new BzRock(6, 0, 0));
+				_bzscene.addBzElement(new BzRock(5, 1, 0));
+				_bzscene.addBzElement(new BzRockMagenta(6, 3, 1));
+				_bzscene.addBzElement(new BzRockBlue(2, 1, 0));
+				_bzscene.addBzElement(new BzAlice(3, 2, 1));
+				_bzscene.addBzElement(new BzRockBlue(4, 1, 0));
+				_bzscene.addBzElement(new BzRockYellow(4, 0, 0));
+				_bzscene.addBzElement(new BzRockYellow(0, 3, 1));
+				_bzscene.addBzElement(new BzRockCyan(8, 0, 1));
+				_bzycyan = new BzRockCyan(0,0,1);
+				_bzycyan.setRotation(BzRotation.EAST);
+				_bzscene.addBzElement(_bzycyan);
+				_bzyellow = new BzRockMagenta(5, 0, 1);
+				_bzyellow.setRotation(BzRotation.EAST);
+				_bzscene.addBzElement(_bzyellow);
+
 				addEventListener(Event.ENTER_FRAME, onEnter);
+				var timer:Timer = new Timer(1000);
+				timer.addEventListener(TimerEvent.TIMER, function (event:TimerEvent):void{
+					_bzyellow.setRotation(_bzyellow.getBzRotation().getValue()+90);
+					_bzycyan.setRotation(_bzycyan.getBzRotation().getValue()+90);
+				});
+				timer.start();
 			}
 
 			private var dir:Boolean = false;
 			private	function onEnter(event:Event):void
 			{
-/* 				var p:Vector3D = _bzelement.getPosition();
-				_bzelement.setPosition(p.x, p.y + (dir ? 0.01:-0.01), p.z);
+ 				var p:Vector3D = _bzelement.getPosition();
+				_bzelement.setPosition(p.x, p.y + (dir ? 0.2:-0.2), p.z);
 				if (p.y >= 3)
+				{
 					dir = false;
+				}
 				else if (p.y <= 2)
-					dir = true; */
+				{
+					dir = true;
+				}
+				
+				var map:BzMap = _bzscene.getBzMap();
+				_bzmap.graphics.clear();
+				var unit:Number = 20;
+				var ofsx:Number = this.uic5.width - unit * _bzrect.width - 5;
+				var ofsy:Number = 5;
+				var alpha:Number = 1 / _bzrect.depth;
+				for (var k:int = 0 ; k < _bzrect.depth ; k++)
+				{
+					for (var j:int = 0 ; j < _bzrect.height ; j++)
+					{
+						for (var i:int = 0 ; i < _bzrect.width ; i++)
+						{
+							var cell:BzCell = map.getBzCell(i, j, k);
+							_bzmap.graphics.beginFill(0xFF0000, alpha*cell.getBzElements().length);
+							_bzmap.graphics.drawRect(ofsx + i*unit,ofsy + j*unit, unit, unit);
+						}
+					}
+				}
+				_bzmap.graphics.endFill();
+				
 				
 				_bzscene.render();
 			}
@@ -80,7 +148,7 @@
 			{
 				var viewport:BzViewport = event.target as BzViewport;
 				switch (viewport.getBzCamera().getRotation().getValue())
-				{
+				{ 
 					case BzRotation.EAST:
 						viewport.getBzCamera().setRotation(BzRotation.NORTH);
 						break;
@@ -92,13 +160,14 @@
 						break;
 					case BzRotation.SOUTH:
 						viewport.getBzCamera().setRotation(BzRotation.EAST);
-						break;
+						break; 
 				}
 			}
 		]]>
 	</fx:Script>
-	<mx:UIComponent id="uic1" left="0" top="0" width="400" height="300"/>
-	<mx:UIComponent id="uic2" right="0" top="0" width="400" height="300"/>
-	<mx:UIComponent id="uic3" left="0" bottom="0" width="400" height="300"/>
-	<mx:UIComponent id="uic4" right="0" bottom="0" width="400" height="300"/>
+	<mx:UIComponent id="uic1" left="0" top="0" width="416" height="272"/>
+	<mx:UIComponent id="uic2" left="416" top="0" width="416" height="272"/>
+	<mx:UIComponent id="uic3" left="0" top="272" width="416" height="272"/>
+	<mx:UIComponent id="uic4" left="416" top="272" width="416" height="272"/>
+	<mx:UIComponent id="uic5" left="416" top="0" width="416" height="544"/>
 </s:WindowedApplication>

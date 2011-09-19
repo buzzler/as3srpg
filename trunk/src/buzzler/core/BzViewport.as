@@ -9,6 +9,7 @@ package buzzler.core
 	import flash.display.Sprite;
 	import flash.geom.Vector3D;
 	import flash.net.dns.AAAARecord;
+	import flash.utils.Dictionary;
 	
 	public class BzViewport extends Sprite
 	{
@@ -18,18 +19,19 @@ package buzzler.core
 		private var _reserve_position	:Boolean;
 		private var _reserve_rotation	:Boolean;
 		private var _reserve_state		:Boolean;
+		private	var _reserve_sort		:Boolean;
+		
+		/**
+		 * temporary variables for sort
+		 */		
+		private var _behinds:Dictionary;
+		private var _depth	:uint;
+		private var _visit	:Dictionary;
+
 
 		public	function BzViewport()
 		{
 			super();
-			
-			// for test
-			this.graphics.lineStyle(1, 0xFF0000);
-			this.graphics.lineTo(400,0);
-			this.graphics.lineTo(400,300);
-			this.graphics.lineTo(0,300);
-			this.graphics.lineTo(0,0);
-			// for test
 			
 			_views = new Vector.<BzDisplayObject>();
 		}
@@ -67,9 +69,16 @@ package buzzler.core
 					_camera.projectPosition(view.getGlobalPosition(), view);
 				}
 			}
+
+			if (_reserve_sort)
+			{
+				sort();
+			}
+			
 			_reserve_position = false;
 			_reserve_rotation = false;
 			_reserve_state = false;
+			_reserve_sort = false;
 		}
 		
 		public	function reserveState():void
@@ -92,6 +101,12 @@ package buzzler.core
 			_reserve_update = true;
 		}
 		
+		/**
+		 *
+		 * 여기를 BzRectangle의 union이나 intersect를 이용해서 효율적인 방법 선택한다.
+		 * 현재의 코드는 바운더리 안의 모든 element에 대해서 스캔. 
+		 * 
+		 */		
 		public	function update():void
 		{
 			if (_reserve_update)
@@ -126,34 +141,85 @@ package buzzler.core
 				
 				_views = views;
 				
-				sort();
-				
 				_reserve_update = false;
+				reserveSort();
 			}
 		}
 		
+		public	function reserveSort():void
+		{
+			_reserve_sort = true;
+		}
+
 		public	function sort():void
 		{
-			_views = _views.sort(compBzDisplayObject);
+			_behinds = new Dictionary();
+			_visit = new Dictionary();
 			
-			var depth:int = 0;
-			for each (var view:BzDisplayObject in _views)
+			for each (var viewA:BzDisplayObject in _views)
 			{
-				setChildIndex(view, depth++);
+				var behind:Vector.<BzDisplayObject> = new Vector.<BzDisplayObject>();
+				var rectA:BzRectangle = viewA.getBzRectangle();
+				for each (var viewB:BzDisplayObject in _views)
+				{
+					var rectB:BzRectangle = viewB.getBzRectangle();
+					if ( (viewA.getBzRectangle().mass==1) && (viewB.getBzRectangle().mass==1) && (viewA!=viewB) )
+					{
+						var subZ:Number = rectA.z - rectB.z;
+						var subXY:Number = (rectA.x+rectA.y) - (rectB.x+rectB.y);
+						
+						if (subXY>0)
+						{
+							behind.push(viewB);
+						}
+						else if (subXY==0 && subZ>0)
+						{
+							behind.push(viewB);
+						}
+					}
+					else
+					{
+						if ( (rectB.lefti <= rectA.righti) && (rectB.topi <= rectA.bottomi) && (rectB.floori <= rectA.ceili) && (viewA != viewB) )
+						{
+							behind.push(viewB);
+						}
+					}
+				}
+				
+				_behinds[viewA] = behind;
 			}
+			
+			_depth = 0;
+			for each (var obj:BzDisplayObject in _views)
+			{
+				if (true !== _visit[obj])
+				{
+					place(obj);
+				}
+			}
+			
+			_behinds = null;
+			_visit = null;
 		}
 		
-		private	function compBzDisplayObject(a:BzDisplayObject, b:BzDisplayObject):int
+		private function place(view:BzDisplayObject):void
 		{
-			var subZ:Number = a.tileZ - b.tileZ;
-			var subXY:Number = (a.tileX+a.tileY) - (b.tileX+b.tileY);
-
-			if (subXY < 0)
-				return -1;
-			else if (subXY > 0)
-				return 1;
-			else
-				return subZ;
+			_visit[view] = true;
+			
+			for each(var behind:BzDisplayObject in _behinds[view])
+			{
+				if(true !== _visit[behind])
+				{
+					place(behind);
+				}
+			}
+			
+			if (_depth != getChildIndex(view))
+			{
+				setChildIndex(view, _depth);
+			}
+			
+			++_depth;
 		}
 	}
 }

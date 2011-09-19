@@ -1,22 +1,26 @@
 package buzzler.core
 {
 	import buzzler.data.BzElement;
+	import buzzler.system.BzRenderer;
+	import buzzler.temp.BzRockYellow;
 	
 	import flash.geom.Vector3D;
 
 	public class BzScene
 	{
-		private	var _bound		:Vector3D;
+		private var _rect		:BzRectangle;
 		private	var _elements	:Vector.<BzElement>;
 		private	var _camera		:Vector.<BzCamera>;
+		private	var _renderer	:BzRenderer;
 		private	var _map		:BzMap;
 		
-		public	function BzScene(bound:Vector3D)
+		public	function BzScene(rect:BzRectangle)
 		{
-			_bound		= bound;
+			_rect		= rect;
+			_renderer	= new BzRenderer();
 			_camera		= new Vector.<BzCamera>();
 			_elements	= new Vector.<BzElement>();
-			_map		= new BzMap(_bound.x, _bound.y, _bound.z);
+			_map		= new BzMap(_rect.width, _rect.height, _rect.depth);
 		}
 		
 		public	function addBzElement(element:BzElement):void
@@ -30,8 +34,7 @@ package buzzler.core
 				
 				for each (var camera:BzCamera in _camera)
 				{
-					var p:Vector3D = element.getPosition();
-					if ( camera.contain(p.x, p.y, p.z) )
+					if ( camera.containBzRectangle(element.getBzRectangle()) )
 					{
 						camera.addBzElement(element);
 					}
@@ -50,8 +53,7 @@ package buzzler.core
 				
 				for each (var camera:BzCamera in _camera)
 				{
-					var p:Vector3D = element.getPosition();
-					if ( camera.contain(p.x, p.y, p.z) )
+					if ( camera.containBzRectangle(element.getBzRectangle()) )
 					{
 						camera.removeBzElement(element);
 					}
@@ -64,15 +66,18 @@ package buzzler.core
 			var index:int = _elements.indexOf(element);
 			if (index >= 0)
 			{
-				var fromCell:BzCell = _map.whichBzCell(element);
+				var fromCell:Vector.<BzCell> = _map.whichBzCell(element);
 				if (fromCell == null)
 				{
 					return;
 				}
 				
-				_map.moveBzElement(element);
+				if (!_map.moveBzElement(element))
+				{
+					return;
+				}
 				
-				var toCell:BzCell = _map.whichBzCell(element);
+				var toCell:Vector.<BzCell> = _map.whichBzCell(element);
 				if (toCell == null)
 				{
 					return;
@@ -80,8 +85,12 @@ package buzzler.core
 				
 				for each (var camera:BzCamera in _camera)
 				{
-					var fromCamera:Boolean = camera.contain(fromCell.x, fromCell.y, fromCell.z);
-					var toCamera:Boolean = camera.contain(toCell.x, toCell.y, toCell.z);
+					var fromCamera:Boolean = 
+						camera.contain(fromCell[0].x, fromCell[0].y, fromCell[0].z) && 
+						camera.contain(fromCell[fromCell.length-1].x, fromCell[fromCell.length-1].y, fromCell[fromCell.length-1].z);
+					var toCamera:Boolean = 
+						camera.contain(toCell[0].x, toCell[0].y, toCell[0].z) && 
+						camera.contain(toCell[toCell.length-1].x, toCell[toCell.length-1].y, toCell[toCell.length-1].z);
 					
 					if (fromCamera && toCamera)
 					{
@@ -135,17 +144,28 @@ package buzzler.core
 				return true;
 		}
 		
+		public	function getRenderer():BzRenderer
+		{
+			return _renderer;
+		}
+		
 		public	function render():void
 		{
 			for each (var camera:BzCamera in _camera)
 			{
 				camera.render();
 			}
+			_renderer.exec();
+		}
+		
+		public	function getBzMap():BzMap
+		{
+			return _map;
 		}
 		
 		public	function getPath(origin:Vector3D, dest:Vector3D):Vector.<BzCell>
 		{
-			return _map.solve(origin, dest);
+			return _map.getPath(origin, dest);
 		}
 	}
 }

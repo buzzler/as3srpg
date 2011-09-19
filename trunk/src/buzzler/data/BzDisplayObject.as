@@ -1,6 +1,7 @@
 package buzzler.data
 {
 	import buzzler.consts.BzTile;
+	import buzzler.core.BzRectangle;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -15,7 +16,7 @@ package buzzler.data
 		private	var _rotated	:Boolean;
 		private	var _rotation	:BzRotation;
 		private	var _moved		:Boolean;
-		private	var _position	:Vector3D;
+		private	var _rect		:BzRectangle;
 		private	var _modified	:Boolean;
 		private	var _state		:BzState;
 		
@@ -30,7 +31,7 @@ package buzzler.data
 			_rotated	= true;
 			_rotation	= new BzRotation();
 			_moved		= true;
-			_position	= new Vector3D();
+			_rect		= new BzRectangle();
 		}
 		
 		override public	function set x(value:Number):void
@@ -53,16 +54,21 @@ package buzzler.data
 			return super.y + getBzSprite().getOffset().y;
 		}
 		
+		public	function getBzRectangle():BzRectangle
+		{
+			return _rect;
+		}
+		
 		public	function setLocalPosition(x:Number, y:Number, z:Number):void
 		{
-			_position.x = x;
-			_position.y = y;
-			_position.z = z;
+			_rect.x = x;
+			_rect.y = y;
+			_rect.z = z;
 		}
 		
 		public	function getLocalPosition():Vector3D
 		{
-			return _position;
+			return _rect.topLeftFloor;
 		}
 		
 		public	function getGlobalPosition():Vector3D
@@ -70,9 +76,31 @@ package buzzler.data
 			return _element.getPosition();
 		}
 		
+		public	function setLocalSize(width:int, height:int, depth:int):void
+		{
+			_rect.width = width;
+			_rect.height = height;
+			_rect.depth = depth;
+		}
+		
+		public	function getLocalSize():Vector3D
+		{
+			return _rect.size;
+		}
+		
+		public	function getGlobalSize():Vector3D
+		{
+			return _element.getBzRectangle().size;
+		}
+		
 		public	function setLocalRotation(value:int):void
 		{
 			_rotation.setValue(value);
+			
+			/*if (Math.abs(_element.getBzRotation().getValue()-value) != 180)
+			{
+				;
+			}*/
 		}
 		
 		public	function getLocalRotation():BzRotation
@@ -82,15 +110,15 @@ package buzzler.data
 		
 		public	function getGlobalRotation():BzRotation
 		{
-			return _element.getRotation();
+			return _element.getBzRotation();
 		}
 		
 		public	function updateState():void
 		{
 			_state = _element.getState();
-			bitmapData = getBzSprite().getBitmapData();
 			
-			// 통합 draw manager에 현제 상태를 등록, 이전 상태 제거, bitmap blitting
+			var sprite:BzSprite = getBzSprite();
+			_element.getBzScene().getRenderer().reg(this, sprite);
 		}
 		
 		public	function getBzState():BzState
@@ -122,23 +150,22 @@ package buzzler.data
 		
 		public	function get tileX():Number
 		{
-			return _position.x;
+			return _rect.x;
 		}
 		
 		public	function get tileY():Number
 		{
-			return _position.y;
+			return _rect.y;
 		}
 		
 		public	function get tileZ():Number
 		{
-			return _position.z;
+			return _rect.z;
 		}
 		
 		public	function clear():void
 		{
 			_element = null;
-			_position = null;
 		}
 		
 		public	function setStateFlag():void

@@ -55,45 +55,67 @@
 			}
 		}
 		
+		public	function contain(rect:BzRectangle):Boolean
+		{
+			if (rect.lefti>=0 && rect.topi>=0 && rect.floori>=0 && 
+				rect.righti<_bound.x && rect.bottomi<_bound.y && rect.ceili<_bound.z)
+				return true;
+			return false;
+		}
+		
 		public	function addBzElement(element:BzElement):void
 		{
-			var pos:Vector3D = element.getPosition();
-			var cell:BzCell = getBzCell(pos.x, pos.y, pos.z);
-			if (cell)
+			var rect:BzRectangle = element.getBzRectangle();
+			if (contain(rect))
 			{
-				cell.addBzElement(element);
-				_hash[element] = cell;
+				var cells:Vector.<BzCell> = new Vector.<BzCell>();
+				for (var i:int = rect.lefti ; i <= rect.righti ; i++)
+				{
+					for (var j:int = rect.topi ; j <= rect.bottomi ; j++)
+					{
+						for (var k:int = rect.floori ; k <= rect.ceili ; k++)
+						{
+							_map[i][j][k].addBzElement(element);
+							cells.push(_map[i][j][k]);
+						}
+					}
+				}
+				_hash[element] = cells;
 			}
 		}
 		
 		public	function removeBzElement(element:BzElement):void
 		{
-			var pos:Vector3D = element.getPosition();
-			var cell:BzCell = getBzCell(pos.x, pos.y, pos.z);
-			if (cell)
+			var cells:Vector.<BzCell> = _hash[element] as Vector.<BzCell>;
+			if (cells)
 			{
-				cell.removeBzElement(element);
+				for each (var cell:BzCell in cells)
+				{
+					cell.removeBzElement(element);
+				}
 				delete _hash[element];
 			}
 		}
 		
-		public	function moveBzElement(element:BzElement):void
+		public	function moveBzElement(element:BzElement):Boolean
 		{
-			var pos:Vector3D = element.getPosition();
-			var fromCell:BzCell = _hash[element] as BzCell;
-			var toCell	:BzCell = getBzCell(Math.round(pos.x), Math.round(pos.y), Math.round(pos.z));
+			var rect:BzRectangle = element.getBzRectangle();
+			var cells:Vector.<BzCell> = _hash[element] as Vector.<BzCell>;
+			var startCell:BzCell = getBzCell(rect.lefti, rect.topi, rect.floori);
+			var endCell:BzCell = getBzCell(rect.righti, rect.bottomi, rect.ceili);
 
-			if (fromCell && toCell && (fromCell != toCell))
+			if (cells && startCell && endCell && (cells[0]!=startCell || cells[cells.length-1]!=endCell))
 			{
-				fromCell.removeBzElement(element);
-				toCell.addBzElement(element);
-				_hash[element] = toCell;
+				removeBzElement(element);
+				addBzElement(element);
+				return true;
 			}
+			return false;
 		}
 		
-		public	function whichBzCell(element:BzElement):BzCell
+		public	function whichBzCell(element:BzElement):Vector.<BzCell>
 		{
-			return _hash[element] as BzCell;
+			return _hash[element] as Vector.<BzCell>;
 		}
 		
 		public	function getBzCell(x:int, y:int, z:int):BzCell
@@ -103,30 +125,7 @@
 			return null;
 		}
 		
-		public	function getBzElements(x:int, y:int, z:int, w:int, h:int, d:int):Vector.<BzElement>
-		{
-			x = Math.max(0,x);
-			y = Math.max(0,y);
-			z = Math.max(0,z);
-			var x_max:int = Math.min(_bound.x,x+w);
-			var y_max:int = Math.min(_bound.y,y+h);
-			var z_max:int = Math.min(_bound.z,z+d);
-
-			var result:Vector.<BzElement> = new Vector.<BzElement>();
-			for (var i:int = x ; i < x_max ; i++)
-			{
-				for (var j:int = y ; j < y_max ; j++)
-				{
-					for (var k:int = z ; k < z_max ; k++)
-					{
-						result = result.concat(_map[i][j][k].getBzElements());
-					}
-				}
-			}
-			return result;
-		}
-		
-		public function solve(origin:Vector3D, dest:Vector3D):Vector.<BzCell>
+		public function getPath(origin:Vector3D, dest:Vector3D):Vector.<BzCell>
 		{
 			for each (var y:Vector.<Vector.<BzCell>> in _map)
 			{
@@ -163,7 +162,6 @@
 			{
 				if(count++ > MAX_ITERATIONS)
 					return null;
-//				solutionPath.push(cellPointer);
 				solutionPath.unshift(cellPointer);
 				cellPointer = cellPointer.getParent();					
 			}

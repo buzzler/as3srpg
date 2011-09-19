@@ -23,9 +23,9 @@ package buzzler.data
 			_states = null;
 		}
 		
-		public	function addState(type:String, state:BzState):void
+		public	function addState(state:BzState):void
 		{
-			_states[type] = state;
+			_states[state.getType()] = state;
 		}
 		
 		public	function removeState(type:String):BzState

@@ -1,9 +1,11 @@
 package buzzler.core
 {
-	import buzzler.data.BzRotation;
 	import buzzler.consts.BzTile;
 	import buzzler.data.BzDisplayObject;
 	import buzzler.data.BzElement;
+	import buzzler.data.BzRotation;
+	import buzzler.temp.BzRockMagenta;
+	import buzzler.temp.BzRockYellow;
 	
 	import flash.geom.Vector3D;
 
@@ -17,8 +19,7 @@ package buzzler.core
 		private	var _rotation	:BzRotation;
 		private	var _scene		:BzScene;
 		private	var _viewport	:Vector.<BzViewport>;
-		private	var _origin		:Vector3D;
-		private	var _bound		:Vector3D;
+		private	var _rect		:BzRectangle;
 		private	var _reserved	:Boolean;
 		private var _elements	:Vector.<BzElement>;
 		private var _mulWidth	:Number;
@@ -29,13 +30,12 @@ package buzzler.core
 		private	var _offsetX	:Number;
 		private	var _offsetY	:Number;
 
-		public	function BzCamera(origin:Vector3D, bound:Vector3D, look:BzRotation)
+		public	function BzCamera(rect:BzRectangle, look:BzRotation)
 		{
 			_rotation	= look.clone();
 			_scene		= null;
 			_viewport	= new Vector.<BzViewport>();
-			_origin		= origin.clone();
-			_bound		= bound.clone();
+			_rect		= rect.clone();
 			_reserved	= false;
 			_elements	= new Vector.<BzElement>();
 			_mulWidth	= BzTile.WIDTH / 2;
@@ -51,6 +51,12 @@ package buzzler.core
 			{
 				_rotation.setValue(value);
 				updateOffset(true, true);
+
+				for each (var viewport:BzViewport in _viewport)
+				{
+					viewport.reserveProjectRotation();
+					viewport.reserveSort();
+				}
 			}
 		}
 		
@@ -66,36 +72,30 @@ package buzzler.core
 		
 		public	function setOrigin(x:int, y:int, z:int):void
 		{
-			_origin.x = x;
-			_origin.y = y;
-			_origin.z = z;
+			_rect.x = x;
+			_rect.y = y;
+			_rect.z = z;
 			updateOffset();
 			reserveUpdate();
 		}
 		
 		public	function setBound(w:int, h:int, d:int):void
 		{
-			_bound.x = w;
-			_bound.y = h;
-			_bound.z = d;
+			_rect.width = w;
+			_rect.height = h;
+			_rect.depth = d;
 			updateOffset();
 			reserveUpdate();
 		}
 		
 		public	function contain(x:int, y:int, z:int):Boolean
 		{
-			if ( _origin.x>x || _origin.y>y || _origin.z>z )
-			{
-				return false;
-			}
-			else if ( _origin.x+_bound.x<=x || _origin.y+_bound.y<=y || _origin.z+_bound.z<=z )
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
+			return _rect.contains(x,y,z);
+		}
+		
+		public	function containBzRectangle(rect:BzRectangle):Boolean
+		{
+			return _rect.containsBzRectangle(rect);
 		}
 		
 		public	function addBzViewport(viewport:BzViewport):void
@@ -124,7 +124,7 @@ package buzzler.core
 		{
 			for each (var viewport:BzViewport in _viewport)
 			{
-				viewport.sort();
+				viewport.reserveSort();
 			}
 		}
 		
@@ -139,6 +139,12 @@ package buzzler.core
 			if (index < 0)
 			{
 				_elements.push(element);
+				
+				for each (var viewport:BzViewport in _viewport)
+				{
+					viewport.reserveUpdate();
+					viewport.reserveSort();
+				}
 			}
 		}
 		
@@ -148,6 +154,12 @@ package buzzler.core
 			if (index >= 0)
 			{
 				_elements.splice(index, 1);
+				
+				for each (var viewport:BzViewport in _viewport)
+				{
+					viewport.reserveUpdate();
+					viewport.reserveSort();
+				}
 			}
 		}
 		
@@ -164,8 +176,7 @@ package buzzler.core
 				var elements:Vector.<BzElement> = _scene.getBzElements();
 				for each (var element:BzElement in elements)
 				{
-					var pos:Vector3D = element.getPosition();
-					if (contain(pos.x, pos.y, pos.z))
+					if ( containBzRectangle(element.getBzRectangle()) )
 					{
 						_elements.push(element);
 					}
@@ -188,31 +199,57 @@ package buzzler.core
 				viewport.render();
 			}
 		}
-		
+
 		public	function projectPosition(tile:Vector3D, target:BzDisplayObject):void
 		{
-			var pos:Vector3D = target.getLocalPosition();
-			pos.z = tile.z - _origin.z;
+			var pos:Vector3D = new Vector3D();
+			pos.z = tile.z - _rect.z;
 			
+			var rect:BzRectangle = target.getBzRectangle();
 			switch (_rotation.getValue())
 			{
-			case BzRotation.NORTH:
-				pos.x = tile.x - _origin.x;
-				pos.y = tile.y - _origin.y;
-				break;
-			case BzRotation.SOUTH:
-				pos.x = _addX - tile.x;
-				pos.y = _addY - tile.y;
-				break;
-			case BzRotation.EAST:
-				pos.x = tile.y - _origin.y;
-				pos.y = _addX - tile.x;
-				break;
-			case BzRotation.WEST:
-				pos.x = _addY - tile.y;
-				pos.y = tile.x - _origin.x;
-				break;
+				case BzRotation.NORTH:
+					pos.x = tile.x - _rect.x;
+					pos.y = tile.y - _rect.y;
+					break;
+				case BzRotation.SOUTH:
+					if (target.getLocalRotation().getValue()%180 == 0)
+					{
+						pos.x = _addX - tile.x - rect.width + 1;
+						pos.y = _addY - tile.y - rect.height + 1;
+					}
+					else
+					{
+						pos.x = _addX - tile.x - rect.height + 1;
+						pos.y = _addY - tile.y - rect.width + 1;
+					}
+					break;
+				case BzRotation.EAST:
+					if (target.getLocalRotation().getValue()%180 != 0)
+					{
+						pos.x = tile.y - _rect.y;
+						pos.y = _addY - tile.x - rect.height + 1;
+					}
+					else
+					{
+						pos.x = tile.y - _rect.y;
+						pos.y = _addY - tile.x - rect.width + 1;
+					}
+					break;
+				case BzRotation.WEST:
+					if (target.getLocalRotation().getValue()%180 != 0)
+					{
+						pos.x = _addX - tile.y - rect.width + 1;
+						pos.y = tile.x - _rect.x;
+					}
+					else
+					{
+						pos.x = _addX - tile.y - rect.height + 1;
+						pos.y = tile.x - _rect.x;
+					}
+					break;
 			}
+			target.setLocalPosition(pos.x, pos.y, pos.z);
 			
 			target.x = (pos.x - pos.y) * _mulWidth + _offsetX;
 			target.y = (pos.x + pos.y) * _mulHeight - pos.z * _mulDepth + _offsetY;
@@ -220,34 +257,44 @@ package buzzler.core
 		
 		public	function projectRotation(rotation:BzRotation, target:BzDisplayObject):void
 		{
-			var result:BzRotation = rotation.subtract(_rotation);
-			target.setLocalRotation(result.getValue());
+			var angle:BzRotation = rotation.subtract(_rotation);
+			target.setLocalRotation(angle.getValue());
+			
+			var size:Vector3D = target.getGlobalSize();
+			if ( (angle.getValue()%180) == 0)
+			{
+				target.setLocalSize(size.x, size.y, size.z);
+			}
+			else
+			{
+				target.setLocalSize(size.y, size.x, size.z);
+			}
 		}
 		
 		private	function updateOffset(move:Boolean = true, rotate:Boolean = false):void
 		{
 			var bx:int;
 			var by:int;
-			var bz:int = _bound.z;
+			var bz:int = _rect.depth;
 			
 			switch (_rotation.getValue())
 			{
 			case BzRotation.NORTH:
 			case BzRotation.SOUTH:
-				bx = _bound.x;
-				by = _bound.y;
+				bx = _rect.width;
+				by = _rect.height;
 				break;
 			case BzRotation.EAST:
 			case BzRotation.WEST:
-				bx = _bound.y;
-				by = _bound.x;
+				bx = _rect.height;
+				by = _rect.width;
 				break;
 			}
 			
 			_offsetX = (by - 1) * _mulWidth;
 			_offsetY = (bz - 1) * _mulDepth;
-			_addX = bx + _origin.x - 1;
-			_addY = by + _origin.y - 1;
+			_addX = bx + _rect.x - 1;
+			_addY = by + _rect.y - 1;
 			
 			for each (var viewport:BzViewport in _viewport)
 			{
