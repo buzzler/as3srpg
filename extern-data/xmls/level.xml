@@ -1,0 +1,474 @@
+<RESULT id="003">
+  <PROFILE id="003" name="방자" thumbnail="../extern-data/images/profiles/003.jpg" exp="25" level="003"/>
+  <SCENE width="15" height="15" depth="6"/>
+  <CAMERA x="0" y="0" z="0" width="15" height="15" depth="6"/>
+  <DEFENCER id="UNIT00" />
+  <DEFENCER id="UNIT01" />
+  <OFFENCER id="UNIT02" />
+  <OFFENCER id="UNIT03" />
+  <UNIT id="UNIT00" type="UnitFighter" x="1" y="2" z="1">
+  	<PERFORMANCE>
+  		<HEALTH		min="0" max="100" value="100" />
+  		<MAGIC		min="0" max="100" value="100" />
+  		<EXPERIENCE	min="0" max="999" value="99" />
+  		<CAPACITY	min="0" max="999" value="99" />
+  		<STRENGTH	min="0" max="999" value="50" />
+  		<VITALITY	min="0" max="999" value="50" />
+  		<INTELLECT	min="0" max="999" value="50" />
+  		<SPIRIT		min="0" max="999" value="50" />
+  		<DEXTERITY	min="0" max="999" value="50" />
+  		<AGILLITY	min="0" max="999" value="50" />
+  	</PERFORMANCE>
+  	<INVENTORY head="ITEM00" body="ITEM01" arms="ITEM02" feet="ITEM03" weapon="ITEM04" shield="ITEM05" accessory="ITEM06">
+  		<STOCK id="ITEM07" count="3" />
+  		<STOCK id="ITEM08" count="2" />
+  		<STOCK id="ITEM09" count="1" />
+  	</INVENTORY>
+  	<SKILL id="s01" min="1" max="1" height="1" method="circle" motion="attack">
+  		<NAME>공격1</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s02" min="1" max="2" height="2" method="diamond"  motion="skill">
+  		<NAME>공격2</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s03" min="1" max="3" height="3" method="octahedron" motion="skill">
+  		<NAME>공격3</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s04" min="2" max="4" height="4" method="sphere" motion="skill">
+  		<NAME>공격4</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  </UNIT>
+  <UNIT id="UNIT01" type="UnitFighter" x="2" y="2" z="1">
+  	<PERFORMANCE>
+  		<HEALTH		min="0" max="100" value="100" />
+  		<MAGIC		min="0" max="100" value="100" />
+  		<EXPERIENCE	min="0" max="999" value="99" />
+  		<CAPACITY	min="0" max="999" value="99" />
+  		<STRENGTH	min="0" max="999" value="50" />
+  		<VITALITY	min="0" max="999" value="50" />
+  		<INTELLECT	min="0" max="999" value="50" />
+  		<SPIRIT		min="0" max="999" value="50" />
+  		<DEXTERITY	min="0" max="999" value="50" />
+  		<AGILLITY	min="0" max="999" value="50" />
+  	</PERFORMANCE>
+  	<INVENTORY head="ITEM00" body="ITEM01" arms="ITEM02" feet="ITEM03" weapon="ITEM04" shield="ITEM05" accessory="ITEM06">
+  		<STOCK id="ITEM07" count="3" />
+  		<STOCK id="ITEM08" count="2" />
+  		<STOCK id="ITEM09" count="1" />
+  	</INVENTORY>
+  	<SKILL id="s01" min="1" max="1" height="1" method="circle" motion="attack">
+  		<NAME>공격1</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s02" min="1" max="2" height="2" method="diamond" motion="skill">
+  		<NAME>공격2</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  </UNIT>
+  <UNIT id="UNIT02" type="UnitFighter" x="3" y="2" z="1">
+  	<PERFORMANCE>
+  		<HEALTH		min="0" max="100" value="100" />
+  		<MAGIC		min="0" max="100" value="100" />
+  		<EXPERIENCE	min="0" max="999" value="99" />
+  		<CAPACITY	min="0" max="999" value="99" />
+  		<STRENGTH	min="0" max="999" value="50" />
+  		<VITALITY	min="0" max="999" value="50" />
+  		<INTELLECT	min="0" max="999" value="50" />
+  		<SPIRIT		min="0" max="999" value="50" />
+  		<DEXTERITY	min="0" max="999" value="50" />
+  		<AGILLITY	min="0" max="999" value="50" />
+  	</PERFORMANCE>
+  	<INVENTORY head="ITEM00" body="ITEM01" arms="ITEM02" feet="ITEM03" weapon="ITEM04" shield="ITEM05" accessory="ITEM06">
+  		<STOCK id="ITEM07" count="3" />
+  		<STOCK id="ITEM08" count="2" />
+  		<STOCK id="ITEM09" count="1" />
+  	</INVENTORY>
+  	<SKILL id="s01" min="1" max="1" height="1" method="circle" motion="attack">
+  		<NAME>공격1</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s02" min="1" max="2" height="2" method="diamond" motion="skill">
+  		<NAME>공격2</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s03" min="1" max="3" height="3" method="octahedron" motion="skill">
+  		<NAME>공격3</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s04" min="2" max="4" height="4" method="sphere" motion="skill">
+  		<NAME>공격4</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  </UNIT>
+  <UNIT id="UNIT03" type="UnitFighter" x="4" y="2" z="1">
+  	<PERFORMANCE>
+  		<HEALTH		min="0" max="100" value="100" />
+  		<MAGIC		min="0" max="100" value="100" />
+  		<EXPERIENCE	min="0" max="999" value="99" />
+  		<CAPACITY	min="0" max="999" value="99" />
+  		<STRENGTH	min="0" max="999" value="50" />
+  		<VITALITY	min="0" max="999" value="50" />
+  		<INTELLECT	min="0" max="999" value="50" />
+  		<SPIRIT		min="0" max="999" value="50" />
+  		<DEXTERITY	min="0" max="999" value="50" />
+  		<AGILLITY	min="0" max="999" value="50" />
+  	</PERFORMANCE>
+  	<INVENTORY head="ITEM00" body="ITEM01" arms="ITEM02" feet="ITEM03" weapon="ITEM04" shield="ITEM05" accessory="ITEM06">
+  		<STOCK id="ITEM07" count="3" />
+  		<STOCK id="ITEM08" count="2" />
+  		<STOCK id="ITEM09" count="1" />
+  	</INVENTORY>
+  	<SKILL id="s01" min="1" max="1" height="1" method="circle" motion="attack">
+  		<NAME>공격1</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s02" min="1" max="2" height="2" method="diamond" motion="skill">
+  		<NAME>공격2</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s03" min="1" max="3" height="3" method="octahedron" motion="skill">
+  		<NAME>공격3</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s04" min="2" max="4" height="4" method="sphere" motion="skill">
+  		<NAME>공격4</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  	<SKILL id="s05" min="3" max="5" height="5" method="circle" motion="skill">
+  		<NAME>공격5</NAME>
+  		<DESCRIPTION>이런저런 공격..</DESCRIPTION>
+  	</SKILL>
+  </UNIT>
+  <BLOCK id="PLAY00" type="BzPlayer" x="2" y="3" z="1"/>
+  <BLOCK id="BOX00" type="BzBox" x="3" y="2" z="1"/>
+  <BLOCK id="ROCK00" type="BzRock" x="0" y="0" z="0"/>
+  <BLOCK id="ROCK01" type="BzRock" x="1" y="0" z="0"/>
+  <BLOCK id="ROCK02" type="BzRock" x="2" y="0" z="0"/>
+  <BLOCK id="ROCK03" type="BzRock" x="3" y="0" z="0"/>
+  <BLOCK id="ROCK04" type="BzRock" x="4" y="0" z="0"/>
+  <BLOCK id="ROCK05" type="BzRock" x="5" y="0" z="0"/>
+  <BLOCK id="ROCK06" type="BzRock" x="6" y="0" z="0"/>
+  <BLOCK id="ROCK07" type="BzRock" x="7" y="0" z="0"/>
+  <BLOCK id="ROCK08" type="BzRock" x="8" y="0" z="0"/>
+  <BLOCK id="ROCK09" type="BzRock" x="9" y="0" z="0"/>
+  <BLOCK id="ROCK10" type="BzRock" x="10" y="0" z="0"/>
+  <BLOCK id="ROCK11" type="BzRock" x="11" y="0" z="0"/>
+  <BLOCK id="ROCK12" type="BzRock" x="12" y="0" z="0"/>
+  <BLOCK id="ROCK13" type="BzRock" x="13" y="0" z="0"/>
+  <BLOCK id="ROCK14" type="BzRock" x="14" y="0" z="0"/>
+  <BLOCK id="ROCK15" type="BzRock" x="0" y="1" z="0"/>
+  <BLOCK id="ROCK16" type="BzRock" x="1" y="1" z="0"/>
+  <BLOCK id="ROCK17" type="BzRock" x="2" y="1" z="0"/>
+  <BLOCK id="ROCK18" type="BzRock" x="3" y="1" z="0"/>
+  <BLOCK id="ROCK19" type="BzRock" x="4" y="1" z="0"/>
+  <BLOCK id="ROCK20" type="BzRock" x="5" y="1" z="0"/>
+  <BLOCK id="ROCK21" type="BzRock" x="6" y="1" z="0"/>
+  <BLOCK id="ROCK22" type="BzRock" x="7" y="1" z="0"/>
+  <BLOCK id="ROCK23" type="BzRock" x="8" y="1" z="0"/>
+  <BLOCK id="ROCK24" type="BzRock" x="9" y="1" z="0"/>
+  <BLOCK id="ROCK25" type="BzRock" x="10" y="1" z="0"/>
+  <BLOCK id="ROCK26" type="BzRock" x="11" y="1" z="0"/>
+  <BLOCK id="ROCK27" type="BzRock" x="12" y="1" z="0"/>
+  <BLOCK id="ROCK28" type="BzRock" x="13" y="1" z="0"/>
+  <BLOCK id="ROCK29" type="BzRock" x="14" y="1" z="0"/>
+  <BLOCK id="ROCK30" type="BzRock" x="0" y="2" z="0"/>
+  <BLOCK id="ROCK31" type="BzRock" x="1" y="2" z="0"/>
+  <BLOCK id="ROCK32" type="BzRock" x="2" y="2" z="0"/>
+  <BLOCK id="ROCK33" type="BzRock" x="3" y="2" z="0"/>
+  <BLOCK id="ROCK34" type="BzRock" x="4" y="2" z="0"/>
+  <BLOCK id="ROCK35" type="BzRock" x="5" y="2" z="0"/>
+  <BLOCK id="ROCK36" type="BzRock" x="6" y="2" z="0"/>
+  <BLOCK id="ROCK37" type="BzRock" x="7" y="2" z="0"/>
+  <BLOCK id="ROCK38" type="BzRock" x="8" y="2" z="0"/>
+  <BLOCK id="ROCK39" type="BzRock" x="9" y="2" z="0"/>
+  <BLOCK id="ROCK40" type="BzRock" x="10" y="2" z="0"/>
+  <BLOCK id="ROCK41" type="BzRock" x="11" y="2" z="0"/>
+  <BLOCK id="ROCK42" type="BzRock" x="12" y="2" z="0"/>
+  <BLOCK id="ROCK43" type="BzRock" x="13" y="2" z="0"/>
+  <BLOCK id="ROCK44" type="BzRock" x="14" y="2" z="0"/>
+  <BLOCK id="ROCK45" type="BzRock" x="0" y="3" z="0"/>
+  <BLOCK id="ROCK46" type="BzRock" x="1" y="3" z="0"/>
+  <BLOCK id="ROCK47" type="BzRock" x="2" y="3" z="0"/>
+  <BLOCK id="ROCK48" type="BzRock" x="3" y="3" z="0"/>
+  <BLOCK id="ROCK49" type="BzRock" x="4" y="3" z="0"/>
+  <BLOCK id="ROCK50" type="BzRock" x="5" y="3" z="0"/>
+  <BLOCK id="ROCK51" type="BzRock" x="6" y="3" z="0"/>
+  <BLOCK id="ROCK52" type="BzRock" x="7" y="3" z="0"/>
+  <BLOCK id="ROCK53" type="BzRock" x="8" y="3" z="0"/>
+  <BLOCK id="ROCK54" type="BzRock" x="9" y="3" z="0"/>
+  <BLOCK id="ROCK55" type="BzRock" x="10" y="3" z="0"/>
+  <BLOCK id="ROCK56" type="BzRock" x="11" y="3" z="0"/>
+  <BLOCK id="ROCK57" type="BzRock" x="12" y="3" z="0"/>
+  <BLOCK id="ROCK58" type="BzRock" x="13" y="3" z="0"/>
+  <BLOCK id="ROCK59" type="BzRock" x="14" y="3" z="0"/>
+  <BLOCK id="ROCK60" type="BzRock" x="0" y="4" z="0"/>
+  <BLOCK id="ROCK61" type="BzRock" x="1" y="4" z="0"/>
+  <BLOCK id="ROCK62" type="BzRock" x="2" y="4" z="0"/>
+  <BLOCK id="ROCK63" type="BzRock" x="3" y="4" z="0"/>
+  <BLOCK id="ROCK64" type="BzRock" x="4" y="4" z="0"/>
+  <BLOCK id="ROCK65" type="BzRock" x="5" y="4" z="0"/>
+  <BLOCK id="ROCK66" type="BzRock" x="6" y="4" z="0"/>
+  <BLOCK id="ROCK67" type="BzRock" x="7" y="4" z="0"/>
+  <BLOCK id="ROCK68" type="BzRock" x="8" y="4" z="0"/>
+  <BLOCK id="ROCK69" type="BzRock" x="9" y="4" z="0"/>
+  <BLOCK id="ROCK70" type="BzRock" x="10" y="4" z="0"/>
+  <BLOCK id="ROCK71" type="BzRock" x="11" y="4" z="0"/>
+  <BLOCK id="ROCK72" type="BzRock" x="12" y="4" z="0"/>
+  <BLOCK id="ROCK73" type="BzRock" x="13" y="4" z="0"/>
+  <BLOCK id="ROCK74" type="BzRock" x="14" y="4" z="0"/>
+  <BLOCK id="ROCK75" type="BzRock" x="0" y="5" z="0"/>
+  <BLOCK id="ROCK76" type="BzRock" x="1" y="5" z="0"/>
+  <BLOCK id="ROCK77" type="BzRock" x="2" y="5" z="0"/>
+  <BLOCK id="ROCK78" type="BzRock" x="3" y="5" z="0"/>
+  <BLOCK id="ROCK79" type="BzRock" x="4" y="5" z="0"/>
+  <BLOCK id="ROCK80" type="BzRock" x="5" y="5" z="0"/>
+  <BLOCK id="ROCK81" type="BzRock" x="6" y="5" z="0"/>
+  <BLOCK id="ROCK82" type="BzRock" x="7" y="5" z="0"/>
+  <BLOCK id="ROCK83" type="BzRock" x="8" y="5" z="0"/>
+  <BLOCK id="ROCK84" type="BzRock" x="9" y="5" z="0"/>
+  <BLOCK id="ROCK85" type="BzRock" x="10" y="5" z="0"/>
+  <BLOCK id="ROCK86" type="BzRock" x="11" y="5" z="0"/>
+  <BLOCK id="ROCK87" type="BzRock" x="12" y="5" z="0"/>
+  <BLOCK id="ROCK88" type="BzRock" x="13" y="5" z="0"/>
+  <BLOCK id="ROCK89" type="BzRock" x="14" y="5" z="0"/>
+  <BLOCK id="ROCK90" type="BzRock" x="0" y="6" z="0"/>
+  <BLOCK id="ROCK91" type="BzRock" x="1" y="6" z="0"/>
+  <BLOCK id="ROCK92" type="BzRock" x="2" y="6" z="0"/>
+  <BLOCK id="ROCK93" type="BzRock" x="3" y="6" z="0"/>
+  <BLOCK id="ROCK94" type="BzRock" x="4" y="6" z="0"/>
+  <BLOCK id="ROCK95" type="BzRock" x="5" y="6" z="0"/>
+  <BLOCK id="ROCK96" type="BzRock" x="6" y="6" z="0"/>
+  <BLOCK id="ROCK97" type="BzRock" x="7" y="6" z="0"/>
+  <BLOCK id="ROCK98" type="BzRock" x="8" y="6" z="0"/>
+  <BLOCK id="ROCK99" type="BzRock" x="9" y="6" z="0"/>
+  <BLOCK id="ROCK100" type="BzRock" x="10" y="6" z="0"/>
+  <BLOCK id="ROCK101" type="BzRock" x="11" y="6" z="0"/>
+  <BLOCK id="ROCK102" type="BzRock" x="12" y="6" z="0"/>
+  <BLOCK id="ROCK103" type="BzRock" x="13" y="6" z="0"/>
+  <BLOCK id="ROCK104" type="BzRock" x="14" y="6" z="0"/>
+  <BLOCK id="ROCK105" type="BzRock" x="0" y="7" z="0"/>
+  <BLOCK id="ROCK106" type="BzRock" x="1" y="7" z="0"/>
+  <BLOCK id="ROCK107" type="BzRock" x="2" y="7" z="0"/>
+  <BLOCK id="ROCK108" type="BzRock" x="3" y="7" z="0"/>
+  <BLOCK id="ROCK109" type="BzRock" x="4" y="7" z="0"/>
+  <BLOCK id="ROCK110" type="BzRock" x="5" y="7" z="0"/>
+  <BLOCK id="ROCK111" type="BzRock" x="6" y="7" z="0"/>
+  <BLOCK id="ROCK112" type="BzRock" x="7" y="7" z="0"/>
+  <BLOCK id="ROCK113" type="BzRock" x="8" y="7" z="0"/>
+  <BLOCK id="ROCK114" type="BzRock" x="9" y="7" z="0"/>
+  <BLOCK id="ROCK115" type="BzRock" x="10" y="7" z="0"/>
+  <BLOCK id="ROCK116" type="BzRock" x="11" y="7" z="0"/>
+  <BLOCK id="ROCK117" type="BzRock" x="12" y="7" z="0"/>
+  <BLOCK id="ROCK118" type="BzRock" x="13" y="7" z="0"/>
+  <BLOCK id="ROCK119" type="BzRock" x="14" y="7" z="0"/>
+  <BLOCK id="ROCK120" type="BzRock" x="0" y="8" z="0"/>
+  <BLOCK id="ROCK121" type="BzRock" x="1" y="8" z="0"/>
+  <BLOCK id="ROCK122" type="BzRock" x="2" y="8" z="0"/>
+  <BLOCK id="ROCK123" type="BzRock" x="3" y="8" z="0"/>
+  <BLOCK id="ROCK124" type="BzRock" x="4" y="8" z="0"/>
+  <BLOCK id="ROCK125" type="BzRock" x="5" y="8" z="0"/>
+  <BLOCK id="ROCK126" type="BzRock" x="6" y="8" z="0"/>
+  <BLOCK id="ROCK127" type="BzRock" x="7" y="8" z="0"/>
+  <BLOCK id="ROCK128" type="BzRock" x="8" y="8" z="0"/>
+  <BLOCK id="ROCK129" type="BzRock" x="9" y="8" z="0"/>
+  <BLOCK id="ROCK130" type="BzRock" x="10" y="8" z="0"/>
+  <BLOCK id="ROCK131" type="BzRock" x="11" y="8" z="0"/>
+  <BLOCK id="ROCK132" type="BzRock" x="12" y="8" z="0"/>
+  <BLOCK id="ROCK133" type="BzRock" x="13" y="8" z="0"/>
+  <BLOCK id="ROCK134" type="BzRock" x="14" y="8" z="0"/>
+  <BLOCK id="ROCK135" type="BzRock" x="0" y="9" z="0"/>
+  <BLOCK id="ROCK136" type="BzRock" x="1" y="9" z="0"/>
+  <BLOCK id="ROCK137" type="BzRock" x="2" y="9" z="0"/>
+  <BLOCK id="ROCK138" type="BzRock" x="3" y="9" z="0"/>
+  <BLOCK id="ROCK139" type="BzRock" x="4" y="9" z="0"/>
+  <BLOCK id="ROCK140" type="BzRock" x="5" y="9" z="0"/>
+  <BLOCK id="ROCK141" type="BzRock" x="6" y="9" z="0"/>
+  <BLOCK id="ROCK142" type="BzRock" x="7" y="9" z="0"/>
+  <BLOCK id="ROCK143" type="BzRock" x="8" y="9" z="0"/>
+  <BLOCK id="ROCK144" type="BzRock" x="9" y="9" z="0"/>
+  <BLOCK id="ROCK145" type="BzRock" x="10" y="9" z="0"/>
+  <BLOCK id="ROCK146" type="BzRock" x="11" y="9" z="0"/>
+  <BLOCK id="ROCK147" type="BzRock" x="12" y="9" z="0"/>
+  <BLOCK id="ROCK148" type="BzRock" x="13" y="9" z="0"/>
+  <BLOCK id="ROCK149" type="BzRock" x="14" y="9" z="0"/>
+  <BLOCK id="ROCK150" type="BzRock" x="0" y="10" z="0"/>
+  <BLOCK id="ROCK151" type="BzRock" x="1" y="10" z="0"/>
+  <BLOCK id="ROCK152" type="BzRock" x="2" y="10" z="0"/>
+  <BLOCK id="ROCK153" type="BzRock" x="3" y="10" z="0"/>
+  <BLOCK id="ROCK154" type="BzRock" x="4" y="10" z="0"/>
+  <BLOCK id="ROCK155" type="BzRock" x="5" y="10" z="0"/>
+  <BLOCK id="ROCK156" type="BzRock" x="6" y="10" z="0"/>
+  <BLOCK id="ROCK157" type="BzRock" x="7" y="10" z="0"/>
+  <BLOCK id="ROCK158" type="BzRock" x="8" y="10" z="0"/>
+  <BLOCK id="ROCK159" type="BzRock" x="9" y="10" z="0"/>
+  <BLOCK id="ROCK160" type="BzRock" x="10" y="10" z="0"/>
+  <BLOCK id="ROCK161" type="BzRock" x="11" y="10" z="0"/>
+  <BLOCK id="ROCK162" type="BzRock" x="12" y="10" z="0"/>
+  <BLOCK id="ROCK163" type="BzRock" x="13" y="10" z="0"/>
+  <BLOCK id="ROCK164" type="BzRock" x="14" y="10" z="0"/>
+  <BLOCK id="ROCK165" type="BzRock" x="0" y="11" z="0"/>
+  <BLOCK id="ROCK166" type="BzRock" x="1" y="11" z="0"/>
+  <BLOCK id="ROCK167" type="BzRock" x="2" y="11" z="0"/>
+  <BLOCK id="ROCK168" type="BzRock" x="3" y="11" z="0"/>
+  <BLOCK id="ROCK169" type="BzRock" x="4" y="11" z="0"/>
+  <BLOCK id="ROCK170" type="BzRock" x="5" y="11" z="0"/>
+  <BLOCK id="ROCK171" type="BzRock" x="6" y="11" z="0"/>
+  <BLOCK id="ROCK172" type="BzRock" x="7" y="11" z="0"/>
+  <BLOCK id="ROCK173" type="BzRock" x="8" y="11" z="0"/>
+  <BLOCK id="ROCK174" type="BzRock" x="9" y="11" z="0"/>
+  <BLOCK id="ROCK175" type="BzRock" x="10" y="11" z="0"/>
+  <BLOCK id="ROCK176" type="BzRock" x="11" y="11" z="0"/>
+  <BLOCK id="ROCK177" type="BzRock" x="12" y="11" z="0"/>
+  <BLOCK id="ROCK178" type="BzRock" x="13" y="11" z="0"/>
+  <BLOCK id="ROCK179" type="BzRock" x="14" y="11" z="0"/>
+  <BLOCK id="ROCK180" type="BzRock" x="0" y="12" z="0"/>
+  <BLOCK id="ROCK181" type="BzRock" x="1" y="12" z="0"/>
+  <BLOCK id="ROCK182" type="BzRock" x="2" y="12" z="0"/>
+  <BLOCK id="ROCK183" type="BzRock" x="3" y="12" z="0"/>
+  <BLOCK id="ROCK184" type="BzRock" x="4" y="12" z="0"/>
+  <BLOCK id="ROCK185" type="BzRock" x="5" y="12" z="0"/>
+  <BLOCK id="ROCK186" type="BzRock" x="6" y="12" z="0"/>
+  <BLOCK id="ROCK187" type="BzRock" x="7" y="12" z="0"/>
+  <BLOCK id="ROCK188" type="BzRock" x="8" y="12" z="0"/>
+  <BLOCK id="ROCK189" type="BzRock" x="9" y="12" z="0"/>
+  <BLOCK id="ROCK190" type="BzRock" x="10" y="12" z="0"/>
+  <BLOCK id="ROCK191" type="BzRock" x="11" y="12" z="0"/>
+  <BLOCK id="ROCK192" type="BzRock" x="12" y="12" z="0"/>
+  <BLOCK id="ROCK193" type="BzRock" x="13" y="12" z="0"/>
+  <BLOCK id="ROCK194" type="BzRock" x="14" y="12" z="0"/>
+  <BLOCK id="ROCK195" type="BzRock" x="0" y="13" z="0"/>
+  <BLOCK id="ROCK196" type="BzRock" x="1" y="13" z="0"/>
+  <BLOCK id="ROCK197" type="BzRock" x="2" y="13" z="0"/>
+  <BLOCK id="ROCK198" type="BzRock" x="3" y="13" z="0"/>
+  <BLOCK id="ROCK199" type="BzRock" x="4" y="13" z="0"/>
+  <BLOCK id="ROCK200" type="BzRock" x="5" y="13" z="0"/>
+  <BLOCK id="ROCK201" type="BzRock" x="6" y="13" z="0"/>
+  <BLOCK id="ROCK202" type="BzRock" x="7" y="13" z="0"/>
+  <BLOCK id="ROCK203" type="BzRock" x="8" y="13" z="0"/>
+  <BLOCK id="ROCK204" type="BzRock" x="9" y="13" z="0"/>
+  <BLOCK id="ROCK205" type="BzRock" x="10" y="13" z="0"/>
+  <BLOCK id="ROCK206" type="BzRock" x="11" y="13" z="0"/>
+  <BLOCK id="ROCK207" type="BzRock" x="12" y="13" z="0"/>
+  <BLOCK id="ROCK208" type="BzRock" x="13" y="13" z="0"/>
+  <BLOCK id="ROCK209" type="BzRock" x="14" y="13" z="0"/>
+  <BLOCK id="ROCK210" type="BzRock" x="0" y="14" z="0"/>
+  <BLOCK id="ROCK211" type="BzRock" x="1" y="14" z="0"/>
+  <BLOCK id="ROCK212" type="BzRock" x="2" y="14" z="0"/>
+  <BLOCK id="ROCK213" type="BzRock" x="3" y="14" z="0"/>
+  <BLOCK id="ROCK214" type="BzRock" x="4" y="14" z="0"/>
+  <BLOCK id="ROCK215" type="BzRock" x="5" y="14" z="0"/>
+  <BLOCK id="ROCK216" type="BzRock" x="6" y="14" z="0"/>
+  <BLOCK id="ROCK217" type="BzRock" x="7" y="14" z="0"/>
+  <BLOCK id="ROCK218" type="BzRock" x="8" y="14" z="0"/>
+  <BLOCK id="ROCK219" type="BzRock" x="9" y="14" z="0"/>
+  <BLOCK id="ROCK220" type="BzRock" x="10" y="14" z="0"/>
+  <BLOCK id="ROCK221" type="BzRock" x="11" y="14" z="0"/>
+  <BLOCK id="ROCK222" type="BzRock" x="12" y="14" z="0"/>
+  <BLOCK id="ROCK223" type="BzRock" x="13" y="14" z="0"/>
+  <BLOCK id="ROCK224" type="BzRock" x="14" y="14" z="0"/>
+  <BLOCK id="ROCK225" type="BzRock" x="0" y="0" z="1"/>
+  <BLOCK id="ROCK226" type="BzRock" x="1" y="0" z="1"/>
+  <BLOCK id="ROCK227" type="BzRock" x="2" y="0" z="1"/>
+  <BLOCK id="ROCK228" type="BzRock" x="3" y="0" z="1"/>
+  <BLOCK id="ROCK229" type="BzRock" x="4" y="0" z="1"/>
+  <BLOCK id="ROCK230" type="BzRock" x="5" y="0" z="1"/>
+  <BLOCK id="ROCK231" type="BzRock" x="6" y="0" z="1"/>
+  <BLOCK id="ROCK232" type="BzRock" x="7" y="0" z="1"/>
+  <BLOCK id="ROCK233" type="BzRock" x="8" y="0" z="1"/>
+  <BLOCK id="ROCK234" type="BzRock" x="10" y="0" z="1"/>
+  <BLOCK id="ROCK235" type="BzRock" x="11" y="0" z="1"/>
+  <BLOCK id="ROCK236" type="BzRock" x="12" y="0" z="1"/>
+  <BLOCK id="ROCK237" type="BzRock" x="13" y="0" z="1"/>
+  <BLOCK id="ROCK238" type="BzRock" x="14" y="0" z="1"/>
+  <BLOCK id="ROCK239" type="BzRock" x="10" y="0" z="2"/>
+  <BLOCK id="ROCK240" type="BzRock" x="10" y="0" z="3"/>
+  <BLOCK id="ROCK241" type="BzRock" x="9" y="0" z="3"/>
+  <BLOCK id="ROCK242" type="BzRock" x="8" y="0" z="3"/>
+  <BLOCK id="ROCK243" type="BzRock" x="8" y="0" z="2"/>
+  <BLOCK id="ROCK244" type="BzRock" x="0" y="1" z="1"/>
+  <BLOCK id="ROCK245" type="BzRock" x="0" y="2" z="1"/>
+  <BLOCK id="ROCK246" type="BzRock" x="0" y="3" z="1"/>
+  <BLOCK id="ROCK247" type="BzRock" x="0" y="5" z="1"/>
+  <BLOCK id="ROCK248" type="BzRock" x="0" y="6" z="1"/>
+  <BLOCK id="ROCK249" type="BzRock" x="0" y="7" z="1"/>
+  <BLOCK id="ROCK250" type="BzRock" x="0" y="8" z="1"/>
+  <BLOCK id="ROCK251" type="BzRock" x="0" y="9" z="1"/>
+  <BLOCK id="ROCK252" type="BzRock" x="0" y="10" z="1"/>
+  <BLOCK id="ROCK253" type="BzRock" x="0" y="11" z="1"/>
+  <BLOCK id="ROCK254" type="BzRock" x="0" y="12" z="1"/>
+  <BLOCK id="ROCK255" type="BzRock" x="0" y="13" z="1"/>
+  <BLOCK id="ROCK256" type="BzRock" x="0" y="14" z="1"/>
+  <BLOCK id="ROCK257" type="BzRock" x="0" y="3" z="2"/>
+  <BLOCK id="ROCK258" type="BzRock" x="0" y="3" z="3"/>
+  <BLOCK id="ROCK259" type="BzRock" x="0" y="4" z="3"/>
+  <BLOCK id="ROCK260" type="BzRock" x="0" y="5" z="3"/>
+  <BLOCK id="ROCK261" type="BzRock" x="0" y="5" z="2"/>
+  <BLOCK id="ROCK262" type="BzRock" x="7" y="6" z="1"/>
+  <BLOCK id="ROCK263" type="BzRock" x="14" y="1" z="1"/>
+  <BLOCK id="ROCK264" type="BzRock" x="14" y="2" z="1"/>
+  <BLOCK id="ROCK265" type="BzRock" x="14" y="3" z="1"/>
+  <BLOCK id="ROCK266" type="BzRock" x="14" y="4" z="1"/>
+  <BLOCK id="ROCK267" type="BzRock" x="14" y="5" z="1"/>
+  <BLOCK id="ROCK268" type="BzRock" x="14" y="6" z="1"/>
+  <BLOCK id="ROCK269" type="BzRock" x="14" y="7" z="1"/>
+  <BLOCK id="ROCK270" type="BzRock" x="14" y="8" z="1"/>
+  <BLOCK id="ROCK271" type="BzRock" x="14" y="10" z="1"/>
+  <BLOCK id="ROCK272" type="BzRock" x="14" y="11" z="1"/>
+  <BLOCK id="ROCK273" type="BzRock" x="14" y="12" z="1"/>
+  <BLOCK id="ROCK274" type="BzRock" x="14" y="13" z="1"/>
+  <BLOCK id="ROCK275" type="BzRock" x="14" y="14" z="1"/>
+  <BLOCK id="ROCK276" type="BzRock" x="14" y="10" z="2"/>
+  <BLOCK id="ROCK277" type="BzRock" x="14" y="10" z="3"/>
+  <BLOCK id="ROCK278" type="BzRock" x="14" y="9" z="3"/>
+  <BLOCK id="ROCK279" type="BzRock" x="14" y="8" z="3"/>
+  <BLOCK id="ROCK280" type="BzRock" x="14" y="8" z="2"/>
+  <BLOCK id="ROCK281" type="BzRock" x="14" y="7" z="2"/>
+  <BLOCK id="ROCK282" type="BzRock" x="14" y="11" z="2"/>
+  <BLOCK id="ROCK283" type="BzRock" x="13" y="14" z="1"/>
+  <BLOCK id="ROCK284" type="BzRock" x="12" y="14" z="1"/>
+  <BLOCK id="ROCK285" type="BzRock" x="11" y="14" z="1"/>
+  <BLOCK id="ROCK286" type="BzRock" x="10" y="14" z="1"/>
+  <BLOCK id="ROCK287" type="BzRock" x="9" y="14" z="1"/>
+  <BLOCK id="ROCK288" type="BzRock" x="8" y="14" z="1"/>
+  <BLOCK id="ROCK289" type="BzRock" x="5" y="14" z="1"/>
+  <BLOCK id="ROCK290" type="BzRock" x="4" y="14" z="1"/>
+  <BLOCK id="ROCK291" type="BzRock" x="3" y="14" z="1"/>
+  <BLOCK id="ROCK292" type="BzRock" x="2" y="14" z="1"/>
+  <BLOCK id="ROCK293" type="BzRock" x="1" y="14" z="1"/>
+  <BLOCK id="ROCK294" type="BzRock" x="4" y="14" z="2"/>
+  <BLOCK id="ROCK295" type="BzRock" x="5" y="14" z="2"/>
+  <BLOCK id="ROCK296" type="BzRock" x="5" y="14" z="3"/>
+  <BLOCK id="ROCK297" type="BzRock" x="6" y="14" z="3"/>
+  <BLOCK id="ROCK298" type="BzRock" x="7" y="14" z="3"/>
+  <BLOCK id="ROCK299" type="BzRock" x="8" y="14" z="3"/>
+  <BLOCK id="ROCK300" type="BzRock" x="8" y="14" z="2"/>
+  <BLOCK id="ROCK301" type="BzRock" x="9" y="14" z="2"/>
+  <BLOCK id="ROCK302" type="BzRock" x="6" y="5" z="1"/>
+  <BLOCK id="ROCK303" type="BzRock" x="7" y="5" z="1"/>
+  <BLOCK id="ROCK304" type="BzRock" x="7" y="7" z="1"/>
+  <BLOCK id="ROCK305" type="BzRock" x="7" y="8" z="1"/>
+  <BLOCK id="ROCK306" type="BzRock" x="7" y="9" z="1"/>
+  <BLOCK id="ROCK307" type="BzRock" x="5" y="5" z="1"/>
+  <BLOCK id="ROCK308" type="BzRock" x="4" y="5" z="1"/>
+  <BLOCK id="ROCK309" type="BzRock" x="3" y="5" z="1"/>
+  <BLOCK id="ROCK310" type="BzRock" x="3" y="6" z="1"/>
+  <BLOCK id="ROCK311" type="BzRock" x="3" y="7" z="1"/>
+  <BLOCK id="ROCK312" type="BzRock" x="3" y="8" z="1"/>
+  <BLOCK id="ROCK313" type="BzRock" x="2" y="8" z="1"/>
+  <BLOCK id="ROCK314" type="BzRock" x="1" y="8" z="1"/>
+  <BLOCK id="ROCK315" type="BzRock" x="10" y="6" z="1"/>
+  <BLOCK id="ROCK316" type="BzRock" x="10" y="5" z="1"/>
+  <BLOCK id="ROCK317" type="BzRock" x="10" y="4" z="1"/>
+  <BLOCK id="ROCK318" type="BzRock" x="10" y="3" z="1"/>
+  <BLOCK id="ROCK319" type="BzRock" x="11" y="3" z="1"/>
+  <BLOCK id="ROCK320" type="BzRock" x="10" y="7" z="1"/>
+  <BLOCK id="ROCK321" type="BzRock" x="10" y="8" z="1"/>
+  <BLOCK id="ROCK322" type="BzRock" x="10" y="9" z="1"/>
+  <BLOCK id="ROCK323" type="BzRock" x="10" y="10" z="1"/>
+  <BLOCK id="ROCK324" type="BzRock" x="10" y="11" z="1"/>
+  <BLOCK id="ROCK325" type="BzRock" x="10" y="12" z="1"/>
+  <BLOCK id="ROCK326" type="BzRock" x="10" y="13" z="1"/>
+</RESULT>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="720" minHeight="560" width="720" height="560" frameRate="60" creationComplete="this.onInit()" currentState="BASE">
+	<fx:Script source="as3defence.as"/>
+	<s:states>
+		<s:State name="BASE"/>
+		<s:State name="LOAD_PROFILE" />
+		<s:State name="TITLE" />
+		<s:State name="LOAD_LEVEL" />
+		<s:State name="LEVEL_CONSTRUCTOR" />
+		<s:State name="LEVEL_CONDITION" />
+		<s:State name="LEVEL_READY" />
+		<s:State name="LEVEL_SYSTEM" />
+		<s:State name="LEVEL_ENEMY" />
+		<s:State name="LEVEL_UNIT" />
+		<s:State name="LEVEL_INVEN" />
+		<s:State name="LEVEL_ACTION" />
+		<s:State name="LEVEL_ATTACKSCOPE" />
+		<s:State name="LEVEL_ATTACKING" />
+		<s:State name="LEVEL_MOVESCOPE" />
+		<s:State name="LEVEL_MOVING" />
+		<s:State name="LEVEL_TAKE" />
+		<s:State name="LEVEL_LOSE" />
+		<s:State name="LEVEL_AI" />
+		<s:State name="LEVEL_DIALOG" />
+		<s:State name="LEVEL_RESULT" />
+		<s:State name="LEVEL_DESTRUCTOR" />
+	</s:states>
+	<s:Label includeIn="LOAD_PROFILE" horizontalCenter="0" verticalCenter="0" text="load profiles.."/>
+	<s:VGroup includeIn="TITLE" horizontalAlign="center" horizontalCenter="0" verticalAlign="middle" verticalCenter="0" id="title_vgroup_viewer"/>
+	<s:HGroup includeIn="TITLE" bottom="10" horizontalCenter="0" id="title_hgourp_friends"/>
+	<s:Label includeIn="LOAD_LEVEL" horizontalCenter="0" verticalCenter="0" text="load level.."/>
+	<mx:UIComponent includeIn="LEVEL_DIALOG,LEVEL_INVEN,LEVEL_READY,LEVEL_ENEMY,LEVEL_CONSTRUCTOR,LEVEL_SYSTEM,LEVEL_MOVING,LEVEL_ACTION,LEVEL_CONDITION,LEVEL_LOSE,LEVEL_UNIT,LEVEL_RESULT,LEVEL_ATTACKSCOPE,LEVEL_ATTACKING,LEVEL_TAKE,LEVEL_AI,LEVEL_MOVESCOPE" width="720" height="560" id="uic"/>
+	<s:HGroup includeIn="LEVEL_DIALOG,LEVEL_INVEN,LEVEL_READY,LEVEL_ENEMY,LEVEL_CONSTRUCTOR,LEVEL_SYSTEM,LEVEL_MOVING,LEVEL_ACTION,LEVEL_CONDITION,LEVEL_LOSE,LEVEL_UNIT,LEVEL_RESULT,LEVEL_ATTACKSCOPE,LEVEL_ATTACKING,LEVEL_TAKE,LEVEL_AI,LEVEL_MOVESCOPE"
+			  left="10" horizontalAlign="center" verticalAlign="middle"
+			  bottom.LEVEL_ACTION="10"
+			  bottom.LEVEL_AI="10"
+			  bottom.LEVEL_ATTACKING="10"
+			  bottom.LEVEL_ATTACKSCOPE="10"
+			  bottom.LEVEL_CONDITION="10"
+			  left.LEVEL_CONSTRUCTOR="10" top.LEVEL_CONSTRUCTOR="10" height.LEVEL_CONSTRUCTOR="23"
+			  bottom.LEVEL_DIALOG="10"
+			  bottom.LEVEL_ENEMY="10"
+			  bottom.LEVEL_INVEN="10"
+			  bottom.LEVEL_LOSE="10"
+			  bottom.LEVEL_MOVESCOPE="10"
+			  bottom.LEVEL_MOVING="10"
+			  bottom.LEVEL_READY="10"
+			  bottom.LEVEL_RESULT="10"
+			  bottom.LEVEL_SYSTEM="10"
+			  bottom.LEVEL_TAKE="10"
+			  bottom.LEVEL_UNIT="10">
+		<s:Button label="&lt;" width="30" click="this.onClickLeft()"/>
+		<s:Button label="&gt;" width="30" click="this.onClickRight()"/>
+		<s:Label text="type:"/>
+		<s:ComboBox id="adminTypes" dataProvider="{this._types}" selectedIndex="0"/>
+		<s:Label text="x:"/>
+		<s:TextInput id="adminX" width="40" enter="this.onClickCreate()"/>
+		<s:Label text="y:"/>
+		<s:TextInput id="adminY" width="40" enter="this.onClickCreate()"/>
+		<s:Label text="z:"/>
+		<s:TextInput id="adminZ" width="40" enter="this.onClickCreate()"/>
+		<s:Button  label="create" click="this.onClickCreate()"/>
+		<s:Button  label="save" click="this.onClickSave()"/>
+	</s:HGroup>
+	<s:Panel includeIn="LEVEL_CONDITION" width="400" height="300" horizontalCenter="0" title="battle conditions" verticalCenter="0">
+		<s:Button bottom="10" label="OK" horizontalCenter="0" id="condition_btn_ok"/>
+		<s:Label x="10" y="10" text="WIN"/>
+		<s:Label x="10" y="30" text="defeat all enemies"/>
+		<s:Label x="10" y="50" text="LOSE"/>
+		<s:Label x="10" y="70" text="hero's dead"/>
+	</s:Panel>
+	<s:Group includeIn="LEVEL_SYSTEM" width="100%" height="100%">
+		<s:Button label="TURN" horizontalCenter="0" verticalCenter="-100" id="system_btn_turn"/>
+		<s:Button label="SAVE" horizontalCenter="-100" verticalCenter="0"/>
+		<s:Button label="LOAD" horizontalCenter="100" verticalCenter="0"/>
+		<s:Button label="SHARE" horizontalCenter="0" verticalCenter="100"/>
+		<s:Button label="CANCEL" right="10" top="10" id="system_btn_cancel"/>
+	</s:Group>
+	<s:Group includeIn="LEVEL_READY" width="100%" height="100%">
+		<s:Button right="10" top="10" label="MENU" id="ready_btn_system" />
+	</s:Group>
+	<s:Group includeIn="LEVEL_ENEMY" width="100%" height="100%">
+		<s:Button right="10" top="10" label="CANCEL" id="enemy_btn_cancel"/>
+		<s:Panel right="10" bottom="10" width="240" height="180" title="Enemy Info">
+		</s:Panel>
+	</s:Group>
+	<s:Group includeIn="LEVEL_UNIT" width="100%" height="100%">
+		<s:Button label="ACTION" horizontalCenter="0" verticalCenter="-100" id="unit_btn_action"/>
+		<s:Button label="MOVE" horizontalCenter="-100" verticalCenter="0" id="unit_btn_move"/>
+		<s:Button label="ITEM" horizontalCenter="100" verticalCenter="0" id="unit_btn_item"/>
+		<s:Button right="10" top="10" label="CANCEL" id="unit_btn_cancel"/>
+		<s:Panel right="10" bottom="10" width="240" height="180" title="Unit Info">
+		</s:Panel>
+	</s:Group>
+	<s:Group includeIn="LEVEL_TAKE" width="100%" height="100%">
+		<s:Panel width="320" height="240" horizontalCenter="0" title="taking turn" verticalCenter="0">
+			<s:Button bottom="10" label="OK" horizontalCenter="0" id="take_btn_ok"/>
+		</s:Panel>		
+	</s:Group>
+	<s:Group includeIn="LEVEL_RESULT" width="100%" height="100%">
+		<s:Panel width="400" height="300" horizontalCenter="0" title="result" verticalCenter="0">
+			<s:Button x="164" y="236" label="OK" id="result_btn_ok"/>
+		</s:Panel>
+	</s:Group>
+	<s:Group includeIn="LEVEL_LOSE" width="100%" height="100%">
+		<s:Panel width="320" height="240" horizontalCenter="0" title="lose turn" verticalCenter="0">
+			<s:Button bottom="10" label="OK" horizontalCenter="0" id="lose_btn_ok"/>
+		</s:Panel>
+	</s:Group>
+	<s:Group includeIn="LEVEL_AI" width="100%" height="100%">
+		<s:Button right="10" top="10" label="SKIP" id="ai_btn_skip"/>
+	</s:Group>
+	<s:Group includeIn="LEVEL_INVEN" width="100%" height="100%">
+		<s:Panel width="400" height="300" horizontalCenter="0" title="inventory" verticalCenter="0">
+			<s:Button bottom="10" label="CANCEL" horizontalCenter="0" id="inven_btn_cancel"/>
+		</s:Panel>
+	</s:Group>
+	<s:Group includeIn="LEVEL_ATTACKSCOPE" width="100%" height="100%">
+		<s:Button right="10" top="10" label="CANCEL" id="attackscope_btn_cancel" />
+	</s:Group>
+	<s:Group includeIn="LEVEL_MOVESCOPE" width="100%" height="100%">
+		<s:Button right="10" top="10" label="CANCEL" id="movescope_btn_cancel" />
+	</s:Group>
+	<s:Group includeIn="LEVEL_ACTION" width="100%" height="100%">
+		<s:Panel width="400" height="300" horizontalCenter="0" title="actions" verticalCenter="0">
+			<s:Button bottom="10" label="CANCEL" horizontalCenter="0" id="action_btn_cancel"/>
+			<s:Button x="10" y="6" label="BLOCK" id="action_btn_block"/>
+			<s:Button x="10" y="35" label="REST" id="action_btn_rest"/>
+			<s:List x="88" y="10" id="action_list_skill" width="300" height="218" verticalScrollPolicy="on"></s:List>
+		</s:Panel>
+	</s:Group>
+</s:Application>

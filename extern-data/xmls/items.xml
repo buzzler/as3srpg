@@ -1,0 +1,142 @@
+<RESULT>
+	<ITEM id="ITEM00" name="엘븐 투구" description="스카이림에서 배껴온 이름이다" type="0" value="5">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="2" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="5" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM01" name="드워븐 갑옷" description="뭐 다 배껴오는..그런거지" type="1" value="10">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="10" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="15" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM02" name="거적대기 장갑" description="죄수용 장갑" type="2" value="1">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="1" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="3" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM03" name="고급 장화" description="꽃신이다. 꽃신." type="3" value="1">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="1" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="1" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM04" name="단검" description="도적용" type="4" value="7">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="7" />
+	  		<STRENGTH	min="0" max="0" value="13" />
+	  		<VITALITY	min="0" max="0" value="0" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM05" name="오키쉬 방패" description="마이 트래져 하아" type="5" value="20">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="20" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="31" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM06" name="금 목걸이" description="불경기엔 금이지 금" type="6" value="120">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="1" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="0" />
+	  		<INTELLECT	min="0" max="0" value="5" />
+	  		<SPIRIT		min="0" max="0" value="6" />
+	  		<DEXTERITY	min="0" max="0" value="7" />
+	  		<AGILLITY	min="0" max="0" value="8" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM07" name="아드레날린" description="전투 뽐뿌받고자 하면 이걸 마셔라" type="7" value="7">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="30" value="30" />
+	  		<MAGIC		min="0" max="40" value="40" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="0" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="0" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM08" name="지도" description="장비하지도 먹지도 못하는 아이템" type="8" value="0">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="0" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="0" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+	<ITEM id="ITEM09" name="열쇠" description="문열때 필요하다 치자" type="9" value="0">
+		<PERFORMANCE>
+	  		<HEALTH		min="0" max="0" value="0" />
+	  		<MAGIC		min="0" max="0" value="0" />
+	  		<EXPERIENCE	min="0" max="0" value="0" />
+	  		<CAPACITY	min="0" max="0" value="0" />
+	  		<STRENGTH	min="0" max="0" value="0" />
+	  		<VITALITY	min="0" max="0" value="0" />
+	  		<INTELLECT	min="0" max="0" value="0" />
+	  		<SPIRIT		min="0" max="0" value="0" />
+	  		<DEXTERITY	min="0" max="0" value="0" />
+	  		<AGILLITY	min="0" max="0" value="0" />
+	  	</PERFORMANCE>
+	</ITEM>
+</RESULT>
