@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="5a717381-1ec0-40a0-9dd1-01cb9ebacf10" projectUUID="5a717381-1ec0-40a0-9dd1-01cb9ebacf10" pureCatalystProject="false" sdkVersion="4.5.1" uuid="b96dd5f3-5e4f-48e3-a175-1c021b744bd3" version="15">
+  <projects/>
+  <src>
+    <linked isMain="false" location="${DOCUMENTS}/rpglib/src" path="${DOCUMENTS}/rpglib/src" position="0" uuid="b96dd5f3-5e4f-48e3-a175-1c021b744bd3"/>
+  </src>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="b96dd5f3-5e4f-48e3-a175-1c021b744bd3"/>
+    <linked location="/libs" path="/libs" position="1" uuid="b96dd5f3-5e4f-48e3-a175-1c021b744bd3"/>
+  </swc>
+  <misc/>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

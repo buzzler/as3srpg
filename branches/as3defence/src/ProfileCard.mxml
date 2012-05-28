@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  horizontalAlign="center" verticalAlign="middle">
+	<fx:Script>
+		<![CDATA[
+			import datas.Profile;
+			
+			private	var _profile	:Profile;
+			private	var _callback	:Function;
+			
+			public	function setProfile(profile:Profile, callback:Function):void
+			{
+				this._profile = profile;
+				this._callback = callback;
+				
+				this.lbl_name.text = profile.name;
+				this.img_thumbnail.source = profile.thumbnail;
+				this.btn_visit.addEventListener(MouseEvent.CLICK, onClick);
+			}
+			
+			private	function onClick(event:MouseEvent):void
+			{
+				btn_visit.removeEventListener(MouseEvent.CLICK, onClick);
+				if (_callback != null)
+				{
+					_callback( _profile );
+				}
+			}
+		]]>
+	</fx:Script>
+	<s:Label id="lbl_name" />
+	<s:Image id="img_thumbnail"/>
+	<s:Button id="btn_visit" label="BATTLE"/>
+</s:VGroup>

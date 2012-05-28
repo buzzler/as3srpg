@@ -1,0 +1,7 @@
+<RESPONSE>
+	<VIEWER id="003" name="방자" thumbnail="../extern-data/images/profiles/VIEWER.jpg" exp="25" level="003"/>
+	<PROFILE id="001" name="이몽룡" thumbnail="../extern-data/images/profiles/001.jpg" exp="5" level="001"/>
+	<PROFILE id="002" name="성춘향" thumbnail="../extern-data/images/profiles/002.jpg" exp="8" level="002"/>
+	<PROFILE id="003" name="방자" thumbnail="../extern-data/images/profiles/003.jpg" exp="25" level="003"/>
+	<PROFILE id="004" name="변학도" thumbnail="../extern-data/images/profiles/004.jpg" exp="35" level="004"/>
+</RESPONSE>
